@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+{% block content %}
+    {% if message %}
+        <div class='alert alert-warning'>{{message}}</div>
+    {% endif %}
+    <form action='.' method='POST'>
+        {% csrf_token %}
+        <table>
+            {{login_form.as_table}}
+        </table>
+        <input type='submit' value='登录'>
+    </form>
+{% endblock %}

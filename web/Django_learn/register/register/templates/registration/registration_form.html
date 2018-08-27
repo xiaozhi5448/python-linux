@@ -1,0 +1,29 @@
+<html>
+<meta charset='utf-8'>
+
+<head>
+    <title>自动化注册</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class='card'>
+        <div class='card-header'>
+            <p>注册窗体</p>
+        </div>
+        <div class='card-body'>
+            <form action='.' method='POST'>
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <input type='submit' value='注册'>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

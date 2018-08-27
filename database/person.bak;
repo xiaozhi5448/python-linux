@@ -1,0 +1,7 @@
+BEGIN TRANSACTION;
+create table person(
+id integer primary key,
+name varchar(20),
+age integer);
+INSERT INTO person VALUES(1,'xiaozhi',22);
+COMMIT;

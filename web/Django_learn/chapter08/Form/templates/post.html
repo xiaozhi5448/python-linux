@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}我有话要说{% endblock %}
+{% block content %}
+    <p>
+        {% if message %}
+            <div class='alert alert-warning'>{{message}}</div>
+        {% endif %}
+    </p>
+    <form name='postForm' action='/' method='GET'>
+    现在的心情:
+    {% for mood in moods %}
+        <input type='radio' name='user_mood' value='{{mood.status}}'>{{mood.status}}
+    {% endfor %}
+    <br/>
+    心情留言板：
+    <br/>
+    <textarea name='user_post' rows=3 cols=70></textarea>
+    <br>
+    <label for='user_id'>您的昵称：</label>
+    <input id='user_id' type='text' name='user_id'>
+    <br>
+    <label for='user_pass'>你的张贴密码：</label>
+    <input id='user_pass' type='password' name='user_pass'><br>
+    <input type='submit' value='post'>
+    <input type='reset' value='reset'>
+    </form>
+    <div class='row'>
+        <div class='col-sm-12'>
+            <div class='card'>
+                <div class='card-header' align='center'>
+                    <h3>~~宝宝心里苦，只在这里说~~</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for post in posts %}
+        {% cycle "<div class='row'> <div class='col-sm-4'>" "<div class='col-sm-4'>" "<div class='col-sm-4'>" %}
+            <div class="card bg-secondary text-white">
+                <div class="card-header">
+                    {{ post.nickname }}觉得:{{post.mood}}
+                </div>
+                <div class="card-body">
+                    {{ post.message | linebreaks}} 
+                </div>
+                <div class="card-footer" align='right'>
+                        <i><small>{{post.pub_time}}</small></i>
+                </div>
+            </div>
+            </div>
+        {% cycle "" "" "</div>" %}
+    {% endfor %}
+{% endblock %}

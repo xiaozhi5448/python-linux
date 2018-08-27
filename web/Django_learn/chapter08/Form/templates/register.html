@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}
+    我有话要说
+{% endblock %}
+{% block content %}
+<div class="container">
+    
+    <form name="my form" action='/' method='GET'>
+    <label for='byear'>出生年份：</label>
+    <select name='byear'>
+        {% for year in years %}
+            <option value='{{ year }}'>{{year}}</option>
+        {% endfor %}
+    </select><br>
+    <label>喜欢的颜色：</label>
+    <input type='checkbox' name='fcolor' value='Green'>Green
+    <input type='checkbox' name='fcolor' value='Yellow'>Yellow
+    <input type='checkbox' name='fcolor' value='White'>White
+    <input type='checkbox' name='fcolor' value='Black'>Black
+    <br>
+    <label for='user_id'></label>
+        姓名:
+    </label>
+    <input id='user_id' type='text' name='user_id'><br>
+    <label for='user_pass'>
+        密码:
+    </label>
+    <input id='user_pass' type='password' name='user_pass'><br>
+    <input type='submit' value='注册'>
+    <input type='reset' value='重置'>
+    </form>
+    Your ID:{{ uid | default:"未输入"}}
+    <br>
+    
+    {% if verified %}
+        <em>您通过了验证</em><br>
+        喜欢的颜色：
+        {% for c in ufcolor %}
+            {{ c }}
+        {% empty %}
+            没有选择任何颜色
+        {% endfor %}<br>        
+        年份：{{ year }}
+    {% else %}
+        <em>账号密码错误</em>
+    {% endif %}
+</div>
+{% endblock %}

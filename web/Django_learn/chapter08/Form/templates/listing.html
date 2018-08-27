@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card bg-secondary" align='center'>
+    本站消息列表
+</div>
+
+{% for post in posts %}
+    {% cycle "<div class='row'> <div class='col-sm-4'>" "<div class='col-sm-4'>" "<div class='col-sm-4'>" %}
+        <div class="card bg-dark text-white">
+            <div class="card-header">
+                {{ post.nickname }}觉得:{{post.mood}}
+            </div>
+            <div class="card-body">
+                {{ post.message | linebreaks}} 
+            </div>
+            <div class="card-footer" align='right'>
+                    <i><small>{{post.pub_time}}</small></i>
+            </div>
+        </div>
+        </div>
+    {% cycle "" "" "</div>" %}
+{% endfor %}
+{% endblock %}

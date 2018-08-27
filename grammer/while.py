@@ -1,0 +1,2 @@
+while expression:
+    do suite

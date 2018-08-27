@@ -1,0 +1,4 @@
+感谢您的注册
+用户:{{user}}
+网站:{{site}}
+您的激活链接:http://{{site}}/accounts/activate/{{activation_key}}将于{{expiration_days}}后到期
